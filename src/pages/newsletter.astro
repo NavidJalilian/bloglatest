@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Newsletter - TechCraft" description="Subscribe to TechCraft's weekly newsletter for the latest web development insights, tutorials, and industry trends delivered to your inbox.">
+  <Header />
+  
+  <main class="min-h-screen gradient-bg-primary">
+    <!-- Hero Section -->
+    <section class="py-24 lg:py-32">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/20 text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-8">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Weekly Newsletter
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
+          Stay <span class="gradient-text">Ahead</span> of the Curve
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Join 15,000+ developers who receive our weekly newsletter packed with the latest web development insights, 
+          tutorials, and industry trends.
+        </p>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="pb-24">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="card-feature p-8 md:p-12">
+          <form class="space-y-6" action="#" method="POST">
+            <div>
+              <label for="email" class="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="input text-lg"
+                placeholder="Enter your email address"
+              />
+            </div>
+            
+            <div>
+              <label for="name" class="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                First Name (Optional)
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="input text-lg"
+                placeholder="Enter your first name"
+              />
+            </div>
+
+            <div class="space-y-3">
+              <label class="block text-sm font-semibold text-gray-900 dark:text-white">
+                What interests you most? (Optional)
+              </label>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <label class="flex items-center">
+                  <input type="checkbox" name="interests" value="frontend" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Frontend Development</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" name="interests" value="backend" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Backend Development</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" name="interests" value="devops" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">DevOps & Infrastructure</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" name="interests" value="mobile" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Mobile Development</span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full btn-primary text-lg py-4">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Subscribe to Newsletter
+            </button>
+          </form>
+
+          <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              We respect your privacy. Unsubscribe at any time.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="pb-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            What You'll Get
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Every Tuesday, receive a carefully curated newsletter with the best content for developers.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Latest Tutorials</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Step-by-step guides and tutorials on the latest web development technologies and frameworks.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Industry Insights</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Expert analysis of industry trends, new tools, and emerging technologies that matter to developers.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Community Highlights</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Featured projects, developer stories, and community contributions from our growing network.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>

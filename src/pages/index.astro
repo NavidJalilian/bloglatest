@@ -19,73 +19,119 @@ const recentPosts = allPosts
   .slice(0, 6);
 ---
 
-<BaseLayout title="DevBlog - Modern Developer Blog" description="A modern developer blog featuring the latest in web development, programming tutorials, and tech insights.">
+<BaseLayout title="TechCraft - Premier Developer Publication" description="Your premier destination for cutting-edge web development insights, programming tutorials, and technology trends. Join thousands of developers who trust TechCraft for expert guidance.">
   <Header />
 
   <main>
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-          Welcome to <span class="text-blue-600 dark:text-blue-400">DevBlog</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-          Discover the latest in web development, programming tutorials, and tech insights.
-          Built with modern technologies and optimized for performance.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/blog"
-            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
-          >
-            Explore Blog Posts
-            <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
-          <a
-            href="/about"
-            class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
-          >
-            About Me
-          </a>
+    <section class="gradient-bg-hero py-24 lg:py-32 relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      <div class="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+      <div class="absolute bottom-10 right-10 w-72 h-72 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center">
+          <!-- Badge -->
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/20 text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-8 animate-fade-in">
+            <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            New articles published weekly
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-8 animate-slide-up">
+            Welcome to <span class="gradient-text">TechCraft</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.2s;">
+            Your premier destination for cutting-edge web development insights, programming tutorials, and technology trends.
+            Join thousands of developers who trust TechCraft for expert guidance.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up" style="animation-delay: 0.4s;">
+            <a href="/blog" class="btn-primary text-lg px-8 py-4">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              Explore Articles
+            </a>
+            <a href="/newsletter" class="btn-secondary text-lg px-8 py-4">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Subscribe Newsletter
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in" style="animation-delay: 0.6s;">
+            <div class="text-center">
+              <div class="text-3xl md:text-4xl font-bold gradient-text-blue">50K+</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Monthly Readers</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl md:text-4xl font-bold gradient-text-blue">200+</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Articles Published</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl md:text-4xl font-bold gradient-text-blue">15K+</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Newsletter Subscribers</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl md:text-4xl font-bold gradient-text-blue">5★</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Community Rating</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Featured Posts Section -->
     {featuredPosts.length > 0 && (
-      <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Featured Posts
-          </h2>
+      <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              Featured <span class="gradient-text">Articles</span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Handpicked articles that showcase the latest trends, best practices, and innovative solutions in web development.
+            </p>
+          </div>
+
           <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {featuredPosts.map((post) => (
-              <article class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            {featuredPosts.map((post, index) => (
+              <article class="card-elevated hover-lift group" style={`animation-delay: ${index * 0.1}s`}>
                 {post.data.heroImage && (
-                  <img
-                    src={post.data.heroImage}
-                    alt={post.data.title}
-                    class="w-full h-48 object-cover"
-                  />
+                  <div class="relative overflow-hidden">
+                    <img
+                      src={post.data.heroImage}
+                      alt={post.data.title}
+                      class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
                 )}
-                <div class="p-6">
-                  <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-                    <time datetime={post.data.pubDate.toISOString()}>
+                <div class="p-8">
+                  <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <time datetime={post.data.pubDate.toISOString()} class="flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
                       {post.data.pubDate.toLocaleDateString('en-US', {
                         year: 'numeric',
-                        month: 'long',
+                        month: 'short',
                         day: 'numeric',
                       })}
                     </time>
+                    <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-medium">
+                      Featured
+                    </span>
                   </div>
-                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    <a href={`/blog/${post.slug}`} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <a href={`/blog/${post.slug}`} class="stretched-link">
                       {post.data.title}
                     </a>
                   </h3>
-                  <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                  <p class="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 leading-relaxed">
                     {post.data.description}
                   </p>
                   <div class="flex flex-wrap gap-2 mb-4">

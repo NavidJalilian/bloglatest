@@ -1,10 +1,10 @@
 ---
-title: "JavaScript Performance Optimization: Tips and Tricks"
-description: "Learn essential JavaScript performance optimization techniques to make your web applications faster and more efficient."
+title: "Advanced JavaScript Performance: From 60fps to Lightning Speed"
+description: "Master advanced JavaScript optimization techniques used by top-tier companies to achieve sub-100ms load times and buttery-smooth 60fps animations."
 pubDate: 2024-01-05
-heroImage: "/images/js-performance.jpg"
-tags: ["javascript", "performance", "optimization", "web-development"]
-author: "DevBlog Team"
+heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
+tags: ["javascript", "performance", "optimization", "web-vitals", "frontend"]
+author: "Marcus Rodriguez"
 featured: false
 lang: "en"
 ---

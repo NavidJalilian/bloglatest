@@ -1,10 +1,10 @@
 ---
-title: "Getting Started with Astro: The Modern Static Site Generator"
-description: "Learn how to build fast, modern websites with Astro, the static site generator that delivers zero JavaScript by default."
+title: "Building Lightning-Fast Websites with Astro: A Complete Guide"
+description: "Discover how Astro's innovative island architecture and zero-JavaScript approach can revolutionize your web development workflow and deliver unmatched performance."
 pubDate: 2024-01-15
-heroImage: "/images/astro-hero.jpg"
-tags: ["astro", "javascript", "web-development", "static-sites"]
-author: "DevBlog Team"
+heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
+tags: ["astro", "performance", "web-development", "static-sites", "javascript"]
+author: "Sarah Chen"
 featured: true
 lang: "en"
 ---
