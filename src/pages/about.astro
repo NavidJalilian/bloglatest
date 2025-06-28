@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="About - TechCraft" description="Learn about TechCraft's mission to empower developers with cutting-edge insights, tutorials, and industry expertise.">
+<BaseLayout title="About - Lumen" description="Learn about Navid Jalilian's mission to discover and share the world's best methods for personal growth and success.">
   <Header />
 
   <main class="min-h-screen bg-white dark:bg-gray-900">
@@ -23,11 +23,12 @@ import Footer from '../components/Footer.astro';
           </div>
 
           <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
-            About <span class="gradient-text">TechCraft</span>
+            About <span class="gradient-text">Lumen</span>
           </h1>
           <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Empowering developers worldwide with cutting-edge insights, comprehensive tutorials,
-            and expert analysis of emerging technologies.
+            Hi, I'm Navid Jalilian<br>
+            Aspiring entrepreneur & lifelong learner sharing
+            global strategies for personal and professional growth
           </p>
         </header>
       </div>
@@ -40,262 +41,92 @@ import Footer from '../components/Footer.astro';
         <div class="grid lg:grid-cols-2 gap-16 mb-20">
           <div class="space-y-8">
             <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Our Mission</h2>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">My Mission</h2>
               <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                TechCraft was founded with a clear mission: to bridge the gap between cutting-edge technology
-                and practical implementation. We believe that every developer deserves access to high-quality,
-                actionable insights that can accelerate their career and improve their craft.
+                My goal is simple: to help you unlock your potential by providing you with the tools, insights, and techniques that can elevate your personal and professional life. Through sharing stories from my own entrepreneurial journey and lessons I've learned along the way, I hope to inspire you to take action, make informed decisions, and pursue your own dreams.
               </p>
               <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                Our team of industry experts and seasoned developers curates content that goes beyond surface-level
-                tutorials. We dive deep into the why behind the how, ensuring our readers understand not just what
-                to do, but why it matters.
+                I believe in the power of continuous learning and the idea that every challenge is an opportunity to grow
               </p>
-              <div class="flex items-center space-x-4">
-                <div class="flex -space-x-2">
-                  <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Team member" />
-                  <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Team member" />
-                  <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Team member" />
-                  <div class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800 bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white text-sm font-semibold">
-                    +5
-                  </div>
-                </div>
-                <span class="text-sm text-gray-600 dark:text-gray-400">Expert contributors worldwide</span>
-              </div>
             </div>
           </div>
 
           <div class="space-y-8">
             <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">What We Cover</h2>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h2>
+              <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                I'd love to hear from you! Whether you have questions, feedback, or just want to connect, feel free to reach out using the contact form below.
+              </p>
+
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Email or Comment</h3>
+                <form class="space-y-4">
+                  <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Comment or Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                      placeholder="Your message here..."
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">New Posts</h2>
               <div class="space-y-4">
-                <div class="flex items-start">
-                  <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Modern Web Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">React, Vue, Angular, Svelte, and the latest frameworks shaping the web.</p>
-                  </div>
+                <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Beautiful Madness of Being Curious</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Latest insights on curiosity and growth</p>
                 </div>
 
-                <div class="flex items-start">
-                  <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Performance & Optimization</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Advanced techniques for building lightning-fast, scalable applications.</p>
-                  </div>
+                <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-2">AI Debugging Tool: Never Read Logs Ever Again!</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Revolutionary approach to debugging with AI assistance</p>
                 </div>
 
-                <div class="flex items-start">
-                  <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">DevOps & Infrastructure</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Cloud platforms, CI/CD, containerization, and deployment strategies.</p>
-                  </div>
+                <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-2">How Does Google Sheets Even Work? (Part 1: Rendering at Scale)</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Deep dive into the technical architecture behind Google Sheets</p>
                 </div>
 
-                <div class="flex items-start">
-                  <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Emerging Technologies</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">AI/ML integration, Web3, IoT, and the technologies of tomorrow.</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start">
-                  <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Career Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Leadership skills, technical interviews, and advancing your developer career.</p>
-                  </div>
+                <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Why I Switched to Augment (And Dropped Everything Else)</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">augment is better than vs code - my personal experience and insights</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-      <!-- Technology Stack -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-          Built with Modern Technologies
-        </h2>
-        <p class="text-gray-600 dark:text-gray-300 text-center mb-8 max-w-3xl mx-auto">
-          This blog is built using cutting-edge web technologies to ensure optimal 
-          performance, accessibility, and developer experience.
-        </p>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <div class="w-12 h-12 mx-auto mb-4 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center">
-              <span class="text-2xl">🚀</span>
-            </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Astro</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Static Site Generator</p>
-          </div>
-          
-          <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <div class="w-12 h-12 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-              <span class="text-2xl">🎨</span>
-            </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Tailwind CSS</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Utility-First CSS</p>
-          </div>
-          
-          <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <div class="w-12 h-12 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-              <span class="text-2xl">📝</span>
-            </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">MDX</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Enhanced Markdown</p>
-          </div>
-          
-          <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <div class="w-12 h-12 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
-              <span class="text-2xl">⚡</span>
-            </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">TypeScript</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Type Safety</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-          Features & Capabilities
-        </h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="space-y-6">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Multilingual Support</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Content available in multiple languages with seamless switching.</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Dark Mode</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Automatic dark mode with system preference detection and manual toggle.</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Syntax Highlighting</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Beautiful code blocks with syntax highlighting for multiple languages.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="space-y-6">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Search & Filter</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Powerful search and tag-based filtering to find content quickly.</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Comments System</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Integrated commenting system for community engagement and discussions.</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">SEO Optimized</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">Built-in SEO optimization with meta tags, structured data, and sitemaps.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
+      <!-- Closing Message -->
       <section class="text-center bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
         <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          Get in Touch
+          Let's Grow Together
         </h2>
         <p class="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-          Have questions, suggestions, or want to contribute? We'd love to hear from you! 
-          Connect with us through our social channels or drop us a message.
+          On a Mission to Discover and Share the World's Best Methods for Personal Growth and Success.
         </p>
-        <div class="flex justify-center space-x-4">
-          <a 
-            href="https://github.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-          >
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            GitHub
-          </a>
-          <a 
-            href="https://twitter.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-          >
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-            </svg>
-            Twitter
-          </a>
-        </div>
       </section>
     </article>
   </main>

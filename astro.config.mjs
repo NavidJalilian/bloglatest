@@ -6,7 +6,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://your-blog-domain.com', // Replace with your actual domain
+  site: 'https://navidjalilian.com',
+  output: 'static',
   integrations: [
     tailwind({
       applyBaseStyles: false,
