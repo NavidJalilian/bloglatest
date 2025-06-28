@@ -8,6 +8,7 @@ heroImage: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h
 featured: false
 draft: false
 lang: "en"
+postSlug: "solving-24-game-with-algorithms"
 ---
 
 I'd just started reading a math book, after all the crap our schools were pushing, I decided to learn only what I enjoyed, so I grabbed _[Art of Problem Solving (AoPS) Prealgebra](https://www.amazon.com/Prealgebra-Richard-Rusczyk/dp/1934124214)_. I was determined to treat every exercise like a game instead of a chore, and I ended up having a blast in the very first hour.

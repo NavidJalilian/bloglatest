@@ -1,19 +1,55 @@
 ---
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  currentPostSlug?: string;
+}
+
+const { currentPostSlug } = Astro.props;
 const currentLang = Astro.currentLocale || 'en';
 const currentPath = Astro.url.pathname;
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'fa', name: 'فارسی', flag: '🇮🇷' },
 ];
+
+// Get all blog posts for language switching
+let blogPostsMap = new Map();
+if (currentPostSlug) {
+  try {
+    const allPosts = await getCollection('blog');
+    allPosts.forEach(post => {
+      if (post.data.postSlug) {
+        if (!blogPostsMap.has(post.data.postSlug)) {
+          blogPostsMap.set(post.data.postSlug, {});
+        }
+        const postSlug = post.slug.replace(/^(en|fa)\//, '');
+        blogPostsMap.get(post.data.postSlug)[post.data.lang] = postSlug;
+      }
+    });
+  } catch (error) {
+    console.warn('Could not load blog posts for language switching');
+  }
+}
 
 // Function to get the path for a different language
 function getLocalizedPath(langCode: string, path: string) {
-  // Remove current language prefix if it exists
-  const pathWithoutLang = path.replace(/^\/(en|es|fr)/, '') || '/';
-  
-  // Add new language prefix (except for default language 'en')
+  // Check if this is a blog post page
+  const isBlogPost = path.match(/^\/(?:fa\/)?blog\/(.+)$/);
+
+  if (isBlogPost && currentPostSlug && blogPostsMap.has(currentPostSlug)) {
+    const postSlugs = blogPostsMap.get(currentPostSlug);
+    if (postSlugs[langCode]) {
+      return langCode === 'en' ? `/blog/${postSlugs[langCode]}` : `/fa/blog/${postSlugs[langCode]}`;
+    }
+    // Fallback to blog index if no corresponding post found
+    return langCode === 'en' ? '/blog' : '/fa/blog';
+  }
+
+  // For non-blog pages, use the standard logic
+  const pathWithoutLang = path.replace(/^\/(en|fa)/, '') || '/';
+
   if (langCode === 'en') {
     return pathWithoutLang;
   }

@@ -7,6 +7,7 @@ tags: ["astro", "performance", "web-development", "static-sites", "javascript"]
 author: "Sarah Chen"
 featured: true
 lang: "en"
+postSlug: "getting-started-with-astro"
 ---
 
 # Getting Started with Astro

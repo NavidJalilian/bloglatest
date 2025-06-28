@@ -10,10 +10,11 @@ export interface Props {
 
 const { title, description = "A modern developer blog", image, lang = "en" } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const isRTL = lang === 'fa';
 ---
 
 <!DOCTYPE html>
-<html lang={lang} class="scroll-smooth">
+<html lang={lang} dir={isRTL ? 'rtl' : 'ltr'} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />

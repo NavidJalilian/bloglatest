@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="خبرنامه - لومن" description="در خبرنامه لومن عضو شوید و آخرین مقالات و نکات رشد شخصی را مستقیماً در ایمیل خود دریافت کنید" lang="fa">
+  <Header />
+  
+  <main class="min-h-screen bg-white dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="gradient-bg-primary py-32 relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center">
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/20 text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-8">
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            خبرنامه هفتگی
+          </div>
+          
+          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
+            در خبرنامه <span class="gradient-text">لومن</span> عضو شوید
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+            هر هفته آخرین مقالات، نکات عملی رشد شخصی و منابع ارزشمند را مستقیماً در ایمیل خود دریافت کنید
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Form Section -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="card-elevated p-8 md:p-12">
+          <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              عضویت رایگان
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              بیش از ۱۰۰۰ نفر قبلاً عضو شده‌اند. شما هم بپیوندید!
+            </p>
+          </div>
+
+          <form class="max-w-md mx-auto" id="newsletter-form">
+            <div class="space-y-4">
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  آدرس ایمیل
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-white transition-colors"
+                />
+              </div>
+              
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  نام (اختیاری)
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="نام شما"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-white transition-colors"
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="w-full btn-primary justify-center py-4 text-lg"
+              >
+                عضویت در خبرنامه
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <div class="mt-6 text-center">
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              با عضویت، شما با <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">شرایط استفاده</a> و 
+              <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">سیاست حفظ حریم خصوصی</a> موافقت می‌کنید.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            چرا خبرنامه لومن؟
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            محتوای منحصر به فرد و ارزشمندی که فقط برای اعضای خبرنامه ارسال می‌شود
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="card-elevated p-6 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">محتوای منحصر به فرد</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              مقالات و نکاتی که فقط برای اعضای خبرنامه نوشته می‌شود
+            </p>
+          </div>
+
+          <div class="card-elevated p-6 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">نکات عملی</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              راهکارهای کاربردی که می‌توانید فوراً در زندگی خود پیاده کنید
+            </p>
+          </div>
+
+          <div class="card-elevated p-6 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">ارسال منظم</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              هر هفته یکشنبه، محتوای جدید مستقیماً در ایمیل شما
+            </p>
+          </div>
+
+          <div class="card-elevated p-6 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">منابع کتاب</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              معرفی بهترین کتاب‌ها و منابع رشد شخصی
+            </p>
+          </div>
+
+          <div class="card-elevated p-6 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">جامعه فعال</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              عضویت در جامعه‌ای از افراد هم‌فکر و پیشرو
+            </p>
+          </div>
+
+          <div class="card-elevated p-6 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">کاملاً رایگان</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              هیچ هزینه‌ای ندارد و می‌توانید هر زمان لغو کنید
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            نظرات اعضا
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            ببینید دیگران چه می‌گویند
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="card-elevated p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                س.ا
+              </div>
+              <div class="mr-3">
+                <h4 class="font-bold text-gray-900 dark:text-white">سارا احمدی</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">کارآفرین</p>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300">
+              "خبرنامه لومن واقعاً زندگی من را تغییر داده. هر هفته نکات عملی جدیدی یاد می‌گیرم."
+            </p>
+          </div>
+
+          <div class="card-elevated p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                م.ر
+              </div>
+              <div class="mr-3">
+                <h4 class="font-bold text-gray-900 dark:text-white">محمد رضایی</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">مدیر فروش</p>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300">
+              "محتوای خبرنامه بسیار کاربردی است. توانسته‌ام عادت‌های بهتری ایجاد کنم."
+            </p>
+          </div>
+
+          <div class="card-elevated p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold">
+                ل.م
+              </div>
+              <div class="mr-3">
+                <h4 class="font-bold text-gray-900 dark:text-white">لیلا محمدی</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">طراح گرافیک</p>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300">
+              "بهترین خبرنامه‌ای که تا حالا عضو شده‌ام. همیشه منتظر ایمیل هفتگی هستم!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Newsletter form handling
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const email = formData.get('email') as string;
+      const name = formData.get('name') as string;
+      
+      // Here you would typically send the data to your newsletter service
+      // For now, we'll just show a success message
+      
+      try {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Show success message
+        alert('با تشکر! شما با موفقیت در خبرنامه عضو شدید.');
+        form.reset();
+      } catch (error) {
+        alert('خطایی رخ داد. لطفاً دوباره تلاش کنید.');
+      }
+    });
+  }
+</script>

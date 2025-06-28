@@ -8,6 +8,7 @@ heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=40
 featured: true
 draft: false
 lang: "en"
+postSlug: "mastering-view-transition-api"
 ---
 
 ## What is the View Transition API?

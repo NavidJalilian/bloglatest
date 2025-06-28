@@ -7,6 +7,7 @@ tags: ["react", "typescript", "architecture", "scalability", "frontend"]
 author: "Alex Thompson"
 featured: false
 lang: "en"
+postSlug: "example-new-article"
 ---
 
 # Building Scalable React Applications with TypeScript

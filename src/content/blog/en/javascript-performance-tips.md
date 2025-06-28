@@ -7,6 +7,8 @@ tags: ["javascript", "performance", "optimization", "web-vitals", "frontend"]
 heroImage: ""
 featured: false
 draft: false
+lang: "en"
+postSlug: "javascript-performance-tips"
 ---
 
 # JavaScript Performance Optimization: Tips and Tricks

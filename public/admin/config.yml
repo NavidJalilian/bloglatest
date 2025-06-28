@@ -16,6 +16,7 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Publish Date", name: "pubDate", widget: "datetime" }
       - { label: "Author", name: "author", widget: "string", default: "Navid Jalilian" }
+      - { label: "Language", name: "lang", widget: "select", options: ["en", "fa"], default: "en" }
       - { label: "Tags", name: "tags", widget: "list", default: ["personal-growth"] }
       - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
       - { label: "Featured", name: "featured", widget: "boolean", default: false }

@@ -8,6 +8,7 @@ heroImage: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=40
 featured: false
 draft: false
 lang: "en"
+postSlug: "ai-debugging-with-agentdesk-browsertools"
 ---
 
 Ever felt frustrated debugging web apps with your AI-powered code editor (like Cursor, Windsurf, or Zed)? You're not alone. Developers often spend countless hours manually checking logs, navigating complex console messages, and trying to pinpoint the exact cause of issues. Thankfully, I've found a game-changing AI debugging tool—AgentDesk BrowserTools MCP!

@@ -9,15 +9,17 @@ type Props = CollectionEntry<'blog'>['data'] & {
   slug: string;
 };
 
-const { title, description, pubDate, updatedDate, heroImage, tags, author, lang } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, author, lang, postSlug } = Astro.props;
 
-const formattedPubDate = pubDate.toLocaleDateString('en-US', {
+// Format dates based on language
+const locale = lang === 'fa' ? 'fa-IR' : 'en-US';
+const formattedPubDate = pubDate.toLocaleDateString(locale, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
 
-const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
+const formattedUpdatedDate = updatedDate?.toLocaleDateString(locale, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -25,7 +27,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
 ---
 
 <BaseLayout title={title} description={description} image={heroImage} lang={lang}>
-  <Header />
+  <Header currentPostSlug={postSlug} />
   
   <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <article class="prose prose-lg dark:prose-invert max-w-none">
@@ -125,21 +127,21 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
             </a>
           </div>
           
-          <a 
-            href="/blog" 
+          <a
+            href={lang === 'fa' ? '/fa/blog' : '/blog'}
             class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
           >
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0L2.586 11H16a1 1 0 110 2H2.586l3.707 3.707a1 1 0 01-1.414 1.414l-5.414-5.414a1 1 0 010-1.414L4.879 6.879a1 1 0 011.414 1.414L2.586 11H16a1 1 0 110 2H2.586l3.707 3.707z" clip-rule="evenodd" />
             </svg>
-            Back to Blog
+            {lang === 'fa' ? 'بازگشت به مقالات' : 'Back to Blog'}
           </a>
         </div>
       </footer>
     </article>
     
     <!-- Comments Section -->
-    <Comments />
+    <Comments lang={lang} />
   </main>
   
   <Footer />

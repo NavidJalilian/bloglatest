@@ -8,6 +8,7 @@ heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=40
 featured: true
 draft: false
 lang: "en"
+postSlug: "how-google-sheets-works-under-the-hood"
 ---
 
 I've always been curious about how new and innovative tools work under the hood. What are the technical decisions behind them? Why those choices? What problems were they solving?

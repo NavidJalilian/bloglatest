@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +11,10 @@
     scroll-behavior: smooth;
   }
 
+  html[lang="fa"] {
+    font-family: 'Vazirmatn', 'Inter', system-ui, sans-serif;
+  }
+
   body {
     @apply transition-colors duration-300 antialiased;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
@@ -17,6 +22,24 @@
 
   code, pre {
     font-family: 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  [dir="rtl"] .prose {
+    text-align: right;
+  }
+
+  [dir="rtl"] .prose h1,
+  [dir="rtl"] .prose h2,
+  [dir="rtl"] .prose h3,
+  [dir="rtl"] .prose h4,
+  [dir="rtl"] .prose h5,
+  [dir="rtl"] .prose h6 {
+    text-align: right;
   }
 }
 

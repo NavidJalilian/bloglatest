@@ -1,6 +1,13 @@
 ---
 // Comments component using Giscus (GitHub Discussions)
 // You'll need to configure this with your GitHub repository
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const giscusLang = lang === 'fa' ? 'fa' : 'en';
 ---
 
 <section class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
@@ -20,7 +27,7 @@
       data-emit-metadata="0"
       data-input-position="bottom"
       data-theme="preferred_color_scheme"
-      data-lang="en"
+      data-lang={giscusLang}
       crossorigin="anonymous"
       async>
     </script>

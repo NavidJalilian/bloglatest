@@ -12,7 +12,10 @@ const blog = defineCollection({
     author: z.string().default('Anonymous'),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
-    lang: z.enum(['en', 'es', 'fr']).default('en'),
+    lang: z.enum(['en', 'fa']).default('en'),
+    // Slug to link corresponding posts in different languages
+    // This should be the same for both language versions of a post
+    postSlug: z.string().optional(),
   }),
 });
 

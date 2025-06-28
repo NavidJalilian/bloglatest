@@ -2,7 +2,40 @@
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSelector from './LanguageSelector.astro';
 
+export interface Props {
+  currentPostSlug?: string;
+}
+
+const { currentPostSlug } = Astro.props;
 const currentPath = Astro.url.pathname;
+const currentLang = Astro.currentLocale || 'en';
+const isRTL = currentLang === 'fa';
+
+// Helper function to get language-specific URLs
+function getLocalizedUrl(path: string) {
+  if (currentLang === 'fa') {
+    return `/fa${path}`;
+  }
+  return path;
+}
+
+// Navigation labels based on language
+const navLabels = {
+  en: {
+    articles: 'Articles',
+    about: 'About',
+    newsletter: 'Newsletter',
+    subscribe: 'Subscribe'
+  },
+  fa: {
+    articles: 'مقالات',
+    about: 'درباره',
+    newsletter: 'خبرنامه',
+    subscribe: 'عضویت'
+  }
+};
+
+const labels = navLabels[currentLang as keyof typeof navLabels] || navLabels.en;
 ---
 
 <header class="sticky top-0 z-50 glass border-b border-white/20 dark:border-gray-700/20">
@@ -10,7 +43,7 @@ const currentPath = Astro.url.pathname;
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
       <div class="flex-shrink-0">
-        <a href="/" class="flex items-center space-x-3 group">
+        <a href={currentLang === 'fa' ? '/fa' : '/'} class="flex items-center space-x-3 group">
           <img
             src="/logo.png"
             alt="Lumen Logo"
@@ -18,7 +51,9 @@ const currentPath = Astro.url.pathname;
           />
           <div class="hidden sm:block">
             <span class="text-2xl font-bold gradient-text">Lumen</span>
-            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">Personal Growth & Success</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">
+              {currentLang === 'fa' ? 'رشد شخصی و موفقیت' : 'Personal Growth & Success'}
+            </div>
           </div>
         </a>
       </div>
@@ -27,40 +62,40 @@ const currentPath = Astro.url.pathname;
       <div class="hidden md:block">
         <div class="flex items-center space-x-1">
           <a
-            href="/"
+            href={currentLang === 'fa' ? '/fa' : '/'}
             class={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
-              currentPath === '/'
+              (currentPath === '/' && currentLang === 'en') || (currentPath === '/fa' && currentLang === 'fa')
                 ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 shadow-md'
                 : 'text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
-            Home
+            {currentLang === 'fa' ? 'خانه' : 'Home'}
           </a>
           <a
-            href="/blog"
+            href={getLocalizedUrl('/blog')}
             class={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
-              currentPath.startsWith('/blog')
+              currentPath.startsWith('/blog') || currentPath.startsWith('/fa/blog')
                 ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 shadow-md'
                 : 'text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
-            Articles
+            {labels.articles}
           </a>
           <a
-            href="/about"
+            href={getLocalizedUrl('/about')}
             class={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
-              currentPath === '/about'
+              currentPath === '/about' || currentPath === '/fa/about'
                 ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 shadow-md'
                 : 'text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
-            About
+            {labels.about}
           </a>
           <a
-            href="/newsletter"
+            href={getLocalizedUrl('/newsletter')}
             class="px-4 py-2 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
           >
-            Newsletter
+            {labels.newsletter}
           </a>
         </div>
       </div>
@@ -78,15 +113,15 @@ const currentPath = Astro.url.pathname;
           </svg>
         </button>
 
-        <LanguageSelector />
+        <LanguageSelector currentPostSlug={currentPostSlug} />
         <ThemeToggle />
 
         <!-- Subscribe button -->
         <a
-          href="/newsletter"
+          href={getLocalizedUrl('/newsletter')}
           class="hidden lg:inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
         >
-          Subscribe
+          {labels.subscribe}
         </a>
 
         <!-- Mobile menu button -->
@@ -109,12 +144,12 @@ const currentPath = Astro.url.pathname;
     <div class="md:hidden hidden" id="mobile-menu">
       <div class="px-4 pt-4 pb-6 space-y-2 border-t border-white/20 dark:border-gray-700/20">
         <a href="/" class="block px-4 py-3 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">Home</a>
-        <a href="/blog" class="block px-4 py-3 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">Articles</a>
-        <a href="/about" class="block px-4 py-3 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">About</a>
-        <a href="/newsletter" class="block px-4 py-3 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">Newsletter</a>
+        <a href={getLocalizedUrl('/blog')} class="block px-4 py-3 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">{labels.articles}</a>
+        <a href={getLocalizedUrl('/about')} class="block px-4 py-3 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">{labels.about}</a>
+        <a href={getLocalizedUrl('/newsletter')} class="block px-4 py-3 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">{labels.newsletter}</a>
         <div class="pt-4">
-          <a href="/newsletter" class="block w-full text-center px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-base font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-200">
-            Subscribe
+          <a href={getLocalizedUrl('/newsletter')} class="block w-full text-center px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-base font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-200">
+            {labels.subscribe}
           </a>
         </div>
       </div>

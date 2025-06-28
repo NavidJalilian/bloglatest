@@ -8,6 +8,7 @@ heroImage: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=40
 featured: true
 draft: false
 lang: "en"
+postSlug: "why-i-switched-to-augment"
 ---
 
 ## Why I Switched to Augment (And Dropped Everything Else)

@@ -1,13 +1,13 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BlogPost from '../../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ id, data }) => {
-    return data.lang === 'en' && id.startsWith('en/');
+    return data.lang === 'fa' && id.startsWith('fa/');
   });
   return posts.map((post: CollectionEntry<'blog'>) => ({
-    params: { slug: post.slug.replace('en/', '') },
+    params: { slug: post.slug.replace('fa/', '') },
     props: post,
   }));
 }
@@ -18,6 +18,6 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BlogPost {...post.data} slug={post.slug.replace('en/', '')} postSlug={post.data.postSlug}>
+<BlogPost {...post.data} slug={post.slug.replace('fa/', '')} postSlug={post.data.postSlug}>
   <Content />
 </BlogPost>

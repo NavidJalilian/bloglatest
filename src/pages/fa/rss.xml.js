@@ -3,12 +3,12 @@ import { getCollection } from 'astro:content';
 
 export async function GET(context) {
   const posts = await getCollection('blog', ({ data }) => {
-    return !data.draft && data.lang === 'en';
+    return !data.draft && data.lang === 'fa';
   });
 
   return rss({
-    title: 'DevBlog',
-    description: 'A modern developer blog featuring the latest in web development, programming tutorials, and tech insights.',
+    title: 'لومن - رشد شخصی و موفقیت',
+    description: 'مجله دیجیتال لومن با تمرکز بر رشد شخصی، موفقیت حرفه‌ای و بهترین روش‌های جهانی برای بهبود زندگی',
     site: context.site,
     items: posts
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -17,9 +17,9 @@ export async function GET(context) {
         pubDate: post.data.pubDate,
         description: post.data.description,
         author: post.data.author,
-        link: `/blog/${post.slug}/`,
+        link: `/fa/blog/${post.slug}/`,
         categories: post.data.tags,
       })),
-    customData: `<language>en-us</language>`,
+    customData: `<language>fa-ir</language>`,
   });
 }
