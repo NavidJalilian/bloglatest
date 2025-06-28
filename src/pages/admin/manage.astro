@@ -1,0 +1,863 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="File Manager - Admin" description="Manage blog posts directly from your website">
+  <Header />
+  
+  <main class="min-h-screen bg-white dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="gradient-bg-hero py-16 lg:py-24 relative overflow-hidden">
+      <div class="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+      <div class="absolute bottom-10 right-10 w-72 h-72 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <header class="text-center mb-12">
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/20 text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-8">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            File Management
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Blog <span class="gradient-text">File Manager</span>
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Create, edit, and publish blog posts directly to your repository
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- GitHub Token Setup -->
+      <div id="tokenSetup" class="card-elevated p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          🔐 GitHub Authentication
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <label for="githubToken" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+              GitHub Personal Access Token
+            </label>
+            <input
+              type="password"
+              id="githubToken"
+              class="input w-full"
+              placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+            >
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Create a token at: <a href="https://github.com/settings/tokens" target="_blank" class="text-indigo-600 hover:text-indigo-800">GitHub Settings → Developer settings → Personal access tokens</a>
+              <br>Required permissions: <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">repo</code> (Full control of private repositories)
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label for="repoOwner" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                Repository Owner
+              </label>
+              <input
+                type="text"
+                id="repoOwner"
+                class="input w-full"
+                placeholder="your-username"
+              >
+            </div>
+            <div>
+              <label for="repoName" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                Repository Name
+              </label>
+              <input
+                type="text"
+                id="repoName"
+                class="input w-full"
+                value="bloglates"
+              >
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <label class="flex items-center cursor-pointer">
+              <input type="checkbox" id="saveToken" class="sr-only peer">
+              <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-white">Remember my token (stored locally)</span>
+            </label>
+          </div>
+          <div class="flex gap-4">
+            <button id="connectBtn" class="btn-primary">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              </svg>
+              Connect to GitHub
+            </button>
+            <button id="clearStoredBtn" class="btn-secondary hidden">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              Clear Stored Data
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Manager Interface -->
+      <div id="fileManager" class="hidden space-y-8">
+        <!-- Create New Post -->
+        <div class="card-elevated p-8">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            ✨ Create New Post
+          </h2>
+          
+          <form id="createPostForm" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="postTitle" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                  Post Title *
+                </label>
+                <input 
+                  type="text" 
+                  id="postTitle" 
+                  required
+                  class="input w-full"
+                  placeholder="Your amazing blog post title"
+                >
+              </div>
+              <div>
+                <label for="postSlug" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                  URL Slug *
+                </label>
+                <input 
+                  type="text" 
+                  id="postSlug" 
+                  required
+                  class="input w-full"
+                  placeholder="your-amazing-blog-post"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="postDescription" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                Description *
+              </label>
+              <textarea 
+                id="postDescription" 
+                required
+                rows="3"
+                class="input w-full resize-none"
+                placeholder="A compelling description for your post"
+              ></textarea>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <div>
+                <label for="postAuthor" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                  Author
+                </label>
+                <input 
+                  type="text" 
+                  id="postAuthor" 
+                  value="Navid Jalilian"
+                  class="input w-full"
+                >
+              </div>
+              <div>
+                <label for="postTags" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                  Tags
+                </label>
+                <input 
+                  type="text" 
+                  id="postTags" 
+                  class="input w-full"
+                  placeholder="personal-growth, success"
+                >
+              </div>
+              <div class="flex items-end">
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" id="postFeatured" class="sr-only peer">
+                  <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+                  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-white">Featured</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label for="postContent" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                Content *
+              </label>
+              <textarea 
+                id="postContent" 
+                required
+                rows="20"
+                class="input w-full font-mono text-sm resize-y"
+                placeholder="# Your Post Title
+
+Write your amazing content here using Markdown...
+
+## Introduction
+
+Start with a compelling introduction.
+
+## Main Content
+
+Share your insights and expertise.
+
+## Conclusion
+
+Wrap up with key takeaways."
+              ></textarea>
+            </div>
+
+            <div class="flex gap-4">
+              <button type="submit" class="btn-primary">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Create & Publish Post
+              </button>
+              <button type="button" id="previewPost" class="btn-secondary">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Preview
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Existing Posts -->
+        <div class="card-elevated p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+              📝 Existing Posts
+            </h2>
+            <button id="refreshPosts" class="btn-secondary">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Refresh
+            </button>
+          </div>
+          <div id="postsList" class="space-y-4">
+            <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+              Connect to GitHub to see your posts
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Post Modal -->
+        <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+          <div class="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Edit Post</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <form id="editPostForm" class="space-y-6">
+                <input type="hidden" id="editPostSha" />
+                <input type="hidden" id="editPostPath" />
+
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label for="editTitle" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                      Post Title *
+                    </label>
+                    <input
+                      type="text"
+                      id="editTitle"
+                      required
+                      class="input w-full"
+                    >
+                  </div>
+                  <div>
+                    <label for="editSlug" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                      URL Slug *
+                    </label>
+                    <input
+                      type="text"
+                      id="editSlug"
+                      required
+                      class="input w-full"
+                    >
+                  </div>
+                </div>
+
+                <div>
+                  <label for="editDescription" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                    Description *
+                  </label>
+                  <textarea
+                    id="editDescription"
+                    required
+                    rows="3"
+                    class="input w-full resize-none"
+                  ></textarea>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                  <div>
+                    <label for="editAuthor" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                      Author
+                    </label>
+                    <input
+                      type="text"
+                      id="editAuthor"
+                      class="input w-full"
+                    >
+                  </div>
+                  <div>
+                    <label for="editTags" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                      Tags
+                    </label>
+                    <input
+                      type="text"
+                      id="editTags"
+                      class="input w-full"
+                    >
+                  </div>
+                  <div class="flex items-end">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" id="editFeatured" class="sr-only peer">
+                      <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+                      <span class="ml-3 text-sm font-medium text-gray-900 dark:text-white">Featured</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="editContent" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                    Content *
+                  </label>
+                  <textarea
+                    id="editContent"
+                    required
+                    rows="20"
+                    class="input w-full font-mono text-sm resize-y"
+                  ></textarea>
+                </div>
+
+                <div class="flex gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <button type="submit" class="btn-primary">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Save Changes
+                  </button>
+                  <button type="button" id="cancelEdit" class="btn-secondary">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Messages -->
+      <div id="statusMessage" class="hidden mt-6"></div>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  let githubConfig = {
+    token: '',
+    owner: '',
+    repo: ''
+  };
+
+  // Load stored configuration on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    loadStoredConfig();
+  });
+
+  function loadStoredConfig() {
+    const stored = localStorage.getItem('githubConfig');
+    if (stored) {
+      try {
+        const config = JSON.parse(stored);
+        document.getElementById('githubToken').value = config.token || '';
+        document.getElementById('repoOwner').value = config.owner || '';
+        document.getElementById('repoName').value = config.repo || 'blog';
+        document.getElementById('saveToken').checked = true;
+        document.getElementById('clearStoredBtn').classList.remove('hidden');
+      } catch (e) {
+        console.error('Error loading stored config:', e);
+      }
+    }
+  }
+
+  function saveConfig() {
+    const saveToken = document.getElementById('saveToken').checked;
+    if (saveToken) {
+      localStorage.setItem('githubConfig', JSON.stringify(githubConfig));
+      document.getElementById('clearStoredBtn').classList.remove('hidden');
+    } else {
+      localStorage.removeItem('githubConfig');
+      document.getElementById('clearStoredBtn').classList.add('hidden');
+    }
+  }
+
+  // Clear stored data
+  document.getElementById('clearStoredBtn')?.addEventListener('click', function() {
+    localStorage.removeItem('githubConfig');
+    document.getElementById('githubToken').value = '';
+    document.getElementById('repoOwner').value = '';
+    document.getElementById('repoName').value = 'blog';
+    document.getElementById('saveToken').checked = false;
+    this.classList.add('hidden');
+    showStatus('Stored data cleared', 'success');
+  });
+
+  // Auto-generate slug from title
+  document.getElementById('postTitle')?.addEventListener('input', function() {
+    const title = this.value;
+    const slug = title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    const slugInput = document.getElementById('postSlug');
+    if (slugInput) slugInput.value = slug;
+  });
+
+  // Auto-generate slug for edit form
+  document.getElementById('editTitle')?.addEventListener('input', function() {
+    const title = this.value;
+    const slug = title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    const slugInput = document.getElementById('editSlug');
+    if (slugInput) slugInput.value = slug;
+  });
+
+  // Connect to GitHub
+  document.getElementById('connectBtn')?.addEventListener('click', async function() {
+    const token = document.getElementById('githubToken')?.value;
+    const owner = document.getElementById('repoOwner')?.value;
+    const repo = document.getElementById('repoName')?.value;
+
+    if (!token || !owner || !repo) {
+      showStatus('Please fill in all GitHub configuration fields', 'error');
+      return;
+    }
+
+    githubConfig = { token, owner, repo };
+
+    try {
+      // Test the connection
+      const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+
+      if (response.ok) {
+        showStatus('Successfully connected to GitHub!', 'success');
+
+        // Save config if requested
+        const saveToken = document.getElementById('saveToken').checked;
+        if (saveToken) {
+          localStorage.setItem('githubConfig', JSON.stringify(githubConfig));
+          document.getElementById('clearStoredBtn').classList.remove('hidden');
+        }
+
+        document.getElementById('tokenSetup')?.classList.add('hidden');
+        document.getElementById('fileManager')?.classList.remove('hidden');
+        loadExistingPosts();
+      } else {
+        showStatus('Failed to connect to GitHub. Check your token and repository details.', 'error');
+      }
+    } catch (error) {
+      showStatus('Error connecting to GitHub: ' + error.message, 'error');
+    }
+  });
+
+  // Create new post
+  document.getElementById('createPostForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const title = document.getElementById('postTitle')?.value;
+    const slug = document.getElementById('postSlug')?.value;
+    const description = document.getElementById('postDescription')?.value;
+    const author = document.getElementById('postAuthor')?.value || 'Navid Jalilian';
+    const tags = document.getElementById('postTags')?.value;
+    const featured = document.getElementById('postFeatured')?.checked;
+    const content = document.getElementById('postContent')?.value;
+
+    if (!title || !slug || !description || !content) {
+      showStatus('Please fill in all required fields', 'error');
+      return;
+    }
+
+    const frontmatter = generateFrontmatter({
+      title, description, author, tags, featured
+    });
+
+    const fileContent = `${frontmatter}\n\n${content}`;
+    const fileName = `${slug}.md`;
+
+    try {
+      await createGitHubFile(`src/content/blog/${fileName}`, fileContent);
+      showStatus(`Post "${title}" created successfully!`, 'success');
+      
+      // Reset form
+      document.getElementById('createPostForm')?.reset();
+      
+      // Refresh posts list
+      setTimeout(loadExistingPosts, 1000);
+    } catch (error) {
+      showStatus('Error creating post: ' + error.message, 'error');
+    }
+  });
+
+  // Helper functions
+  function generateFrontmatter({ title, description, author, tags, featured }) {
+    const date = new Date().toISOString().split('T')[0];
+    const tagArray = tags ? tags.split(',').map(tag => `"${tag.trim()}"`) : ['"personal-growth"'];
+    
+    return `---
+title: "${title}"
+description: "${description}"
+pubDate: ${date}
+author: "${author}"
+tags: [${tagArray.join(', ')}]
+heroImage: ""
+featured: ${featured}
+draft: false
+---`;
+  }
+
+  async function createGitHubFile(path, content, sha = null) {
+    const { token, owner, repo } = githubConfig;
+
+    const body = {
+      message: sha ? `Update blog post: ${path}` : `Add new blog post: ${path}`,
+      content: btoa(encodeURIComponent(content).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode(parseInt(p1, 16)))),
+      branch: 'main'
+    };
+
+    if (sha) {
+      body.sha = sha;
+    }
+
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to create/update file');
+    }
+
+    return response.json();
+  }
+
+  async function deleteGitHubFile(path, sha) {
+    const { token, owner, repo } = githubConfig;
+
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `Delete blog post: ${path}`,
+        sha: sha,
+        branch: 'main'
+      })
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to delete file');
+    }
+
+    return response.json();
+  }
+
+  async function getFileContent(path) {
+    const { token, owner, repo } = githubConfig;
+
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to get file content');
+    }
+
+    const data = await response.json();
+    return {
+      content: new TextDecoder().decode(Uint8Array.from(atob(data.content), c => c.charCodeAt(0))),
+      sha: data.sha
+    };
+  }
+
+  async function loadExistingPosts() {
+    const { token, owner, repo } = githubConfig;
+
+    try {
+      showStatus('Loading posts...', 'info');
+      const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/src/content/blog`, {
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+
+      if (response.ok) {
+        const files = await response.json();
+        const mdFiles = files.filter(file => file.name.endsWith('.md'));
+        displayPosts(mdFiles);
+        showStatus('', 'clear');
+      } else {
+        showStatus('Failed to load posts', 'error');
+      }
+    } catch (error) {
+      console.error('Error loading posts:', error);
+      showStatus('Error loading posts: ' + error.message, 'error');
+    }
+  }
+
+  // Refresh posts button
+  document.getElementById('refreshPosts')?.addEventListener('click', function() {
+    loadExistingPosts();
+  });
+
+  function displayPosts(posts) {
+    const container = document.getElementById('postsList');
+    if (!container) return;
+
+    if (posts.length === 0) {
+      container.innerHTML = '<div class="text-center py-8 text-gray-500 dark:text-gray-400">No posts found</div>';
+      return;
+    }
+
+    container.innerHTML = posts.map(post => `
+      <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+        <div class="flex-1">
+          <h3 class="font-medium text-gray-900 dark:text-white">${post.name}</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Size: ${(post.size / 1024).toFixed(1)} KB</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="px-3 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700" onclick="editPost('${post.name}', '${post.sha}')">
+            <svg class="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            Edit
+          </button>
+          <button class="px-3 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700" onclick="deletePost('${post.name}', '${post.sha}')">
+            <svg class="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            Delete
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Edit post function
+  window.editPost = async function(filename, sha) {
+    try {
+      showStatus('Loading post content...', 'info');
+      const path = `src/content/blog/${filename}`;
+      const { content } = await getFileContent(path);
+
+      // Parse frontmatter and content
+      const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      if (!frontmatterMatch) {
+        showStatus('Error: Invalid post format', 'error');
+        return;
+      }
+
+      const frontmatter = frontmatterMatch[1];
+      const postContent = frontmatterMatch[2];
+
+      // Extract frontmatter fields
+      const title = frontmatter.match(/title:\s*["']([^"']+)["']/)?.[1] || '';
+      const description = frontmatter.match(/description:\s*["']([^"']+)["']/)?.[1] || '';
+      const author = frontmatter.match(/author:\s*["']([^"']+)["']/)?.[1] || '';
+      const tags = frontmatter.match(/tags:\s*\[(.*?)\]/)?.[1]?.replace(/["']/g, '') || '';
+      const featured = frontmatter.includes('featured: true');
+
+      // Populate edit form
+      document.getElementById('editPostSha').value = sha;
+      document.getElementById('editPostPath').value = path;
+      document.getElementById('editTitle').value = title;
+      document.getElementById('editSlug').value = filename.replace('.md', '');
+      document.getElementById('editDescription').value = description;
+      document.getElementById('editAuthor').value = author;
+      document.getElementById('editTags').value = tags;
+      document.getElementById('editFeatured').checked = featured;
+      document.getElementById('editContent').value = postContent.trim();
+
+      // Show modal
+      document.getElementById('editModal').classList.remove('hidden');
+      showStatus('', 'clear');
+    } catch (error) {
+      showStatus('Error loading post: ' + error.message, 'error');
+    }
+  };
+
+  // Delete post function
+  window.deletePost = async function(filename, sha) {
+    if (!confirm(`Are you sure you want to delete "${filename}"? This action cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      showStatus('Deleting post...', 'info');
+      const path = `src/content/blog/${filename}`;
+      await deleteGitHubFile(path, sha);
+      showStatus(`Post "${filename}" deleted successfully!`, 'success');
+
+      // Refresh the posts list after a short delay
+      setTimeout(() => {
+        loadExistingPosts();
+      }, 500);
+    } catch (error) {
+      showStatus('Error deleting post: ' + error.message, 'error');
+    }
+  };
+
+  // Modal functionality
+  document.getElementById('closeModal')?.addEventListener('click', function() {
+    document.getElementById('editModal').classList.add('hidden');
+  });
+
+  document.getElementById('cancelEdit')?.addEventListener('click', function() {
+    document.getElementById('editModal').classList.add('hidden');
+  });
+
+  // Edit form submission
+  document.getElementById('editPostForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const sha = document.getElementById('editPostSha').value;
+    const path = document.getElementById('editPostPath').value;
+    const title = document.getElementById('editTitle').value;
+    const slug = document.getElementById('editSlug').value;
+    const description = document.getElementById('editDescription').value;
+    const author = document.getElementById('editAuthor').value || 'Navid Jalilian';
+    const tags = document.getElementById('editTags').value;
+    const featured = document.getElementById('editFeatured').checked;
+    const content = document.getElementById('editContent').value;
+
+    if (!title || !slug || !description || !content) {
+      showStatus('Please fill in all required fields', 'error');
+      return;
+    }
+
+    const frontmatter = generateFrontmatter({
+      title, description, author, tags, featured
+    });
+
+    const fileContent = `${frontmatter}\n\n${content}`;
+    const newPath = `src/content/blog/${slug}.md`;
+
+    try {
+      showStatus('Saving changes...', 'info');
+
+      // If filename changed, delete old file and create new one
+      if (path !== newPath) {
+        await deleteGitHubFile(path, sha);
+        await createGitHubFile(newPath, fileContent);
+      } else {
+        await createGitHubFile(path, fileContent, sha);
+      }
+
+      showStatus(`Post "${title}" updated successfully!`, 'success');
+      document.getElementById('editModal').classList.add('hidden');
+
+      // Refresh the posts list after a short delay
+      setTimeout(() => {
+        loadExistingPosts();
+      }, 500);
+    } catch (error) {
+      showStatus('Error updating post: ' + error.message, 'error');
+    }
+  });
+
+  function showStatus(message, type) {
+    const container = document.getElementById('statusMessage');
+    if (!container) return;
+
+    if (type === 'clear') {
+      container.classList.add('hidden');
+      return;
+    }
+
+    let bgColor = 'bg-blue-50 border-blue-200 text-blue-800';
+    if (type === 'success') bgColor = 'bg-green-50 border-green-200 text-green-800';
+    if (type === 'error') bgColor = 'bg-red-50 border-red-200 text-red-800';
+
+    container.innerHTML = `
+      <div class="p-4 rounded-lg border ${bgColor}">
+        ${message}
+      </div>
+    `;
+    container.classList.remove('hidden');
+
+    if (type !== 'info') {
+      setTimeout(() => {
+        container.classList.add('hidden');
+      }, 5000);
+    }
+  }
+
+  // Preview functionality
+  document.getElementById('previewPost')?.addEventListener('click', function() {
+    const title = document.getElementById('postTitle')?.value || 'Untitled';
+    const content = document.getElementById('postContent')?.value || '';
+    
+    const previewWindow = window.open('', '_blank', 'width=800,height=600');
+    if (previewWindow) {
+      previewWindow.document.write(`
+        <html>
+          <head>
+            <title>Preview: ${title}</title>
+            <style>
+              body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.6; }
+              h1, h2, h3 { color: #1f2937; }
+              pre { background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+              code { background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem; }
+            </style>
+          </head>
+          <body>
+            <h1>${title}</h1>
+            <div style="white-space: pre-wrap;">${content}</div>
+          </body>
+        </html>
+      `);
+      previewWindow.document.close();
+    }
+  });
+</script>
