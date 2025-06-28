@@ -1,12 +1,12 @@
 ---
 title: "Advanced JavaScript Performance: From 60fps to Lightning Speed"
 description: "Master advanced JavaScript optimization techniques used by top-tier companies to achieve sub-100ms load times and buttery-smooth 60fps animations."
-pubDate: 2024-01-05
-heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
-tags: ["javascript", "performance", "optimization", "web-vitals", "frontend"]
+pubDate: 2025-06-28
 author: "Marcus Rodriguez"
+tags: ["javascript", "performance", "optimization", "web-vitals", "frontend"]
+heroImage: ""
 featured: false
-lang: "en"
+draft: false
 ---
 
 # JavaScript Performance Optimization: Tips and Tricks
@@ -79,7 +79,7 @@ for (const num of numbers) {
 }
 ```
 
-### 2. Debouncing and Throttling
+### 2. Debouncing and Throttlingm
 
 Control the frequency of expensive operations:
 
